@@ -1,17 +1,15 @@
 <Page loaded="pageLoaded">
-  <GridLayout id="3blocks">
-    <GridLayout  columns="*,*" rows="*,*,*" id="itemLR">
-      <Label text="Label BEFORE" row="0" col="0" colSpan="2" backgroundColor="lightblue" />
-        <GridLayout row="1" col="0" backgroundColor="green" id="Litems">
-            <ListView items="{{ leftItems }}" pan="dragit" id="Litem" />
-        </GridLayout>
-        <GridLayout row="1" col="1" backgroundColor="yellow">
-            <ListView items="{{ rightItems }}" />
-        </GridLayout>
-        <Label text="Label END" row="2" col="0" colSpan="2" backgroundColor="lightblue"/>
-        </GridLayout>
-        <AbsoluteLayout>
-          <Label left="100" top="300"  text="drag me" id="dragLabel" backgroundColor="pink" visibility="collapsed"/>
-        </AbsoluteLayout>
-    </GridLayout>
+  <GridLayout  columns="*,*" rows="*,*,*" id="itemLR">
+    <Label text="Label BEFORE" row="0" col="0" colSpan="2" backgroundColor="lightblue" />
+    <ListView items="{{ leftItems }}" itemTap="itemTap" row="1" col="0" backgroundColor="green" id="Litem">
+      <ListView.itemTemplate>
+        <Label text="{{$value}}" pan="dragit" />
+      </ListView.itemTemplate>
+    </ListView>
+    <ListView items="{{ rightItems }}" row="1" col="1" backgroundColor="yellow" />
+    <Label text="Label END" row="2" col="0" colSpan="2" backgroundColor="lightblue"/>
+    <AbsoluteLayout row="1" col="0" colspan="2" style="border-color: lime; border-width: 2" backgroundColor="transparent">
+      <Label  text="drag me" id="dragLabel" backgroundColor="pink" visibility="collapsed" style="border-color: red; border-width: 2"/>
+    </AbsoluteLayout>
+  </GridLayout>
 </Page>

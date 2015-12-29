@@ -24,14 +24,19 @@ exports.dragit = function(args) {
   var dragLabel = viewModule.getViewById(view.page, "dragLabel");
   dragLabel.visibility ="visible";
   dragLabel.text= "moving";
+  dragLabel.text= view.bindingContext.toString();
 
   var X = args.deltaX;
   var Y = args.deltaY;
   var left = absoluteLayout.AbsoluteLayout.getLeft(view);
   var top = absoluteLayout.AbsoluteLayout.getTop(view);
-  absoluteLayout.AbsoluteLayout.setLeft(dragLabel,left+X);
-  absoluteLayout.AbsoluteLayout.setTop(dragLabel,top+Y);
+  absoluteLayout.AbsoluteLayout.setLeft(dragLabel,left + X);
+  absoluteLayout.AbsoluteLayout.setTop(dragLabel,top + Y);
 
-  console.log("dragit" + X + " " + Y);
-  console.log("coord [" + top + " - " + top + "]");
+  console.log("dragit " + X + " " + Y);
+  //console.log("coord [" + top + " - " + top + "]");
 };
+
+exports.itemTap = function(args) {
+    console.log('ITEM TAP: ' + args.view.constructor.name);
+}
